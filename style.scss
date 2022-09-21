@@ -1,0 +1,161 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+
+}
+
+.container {
+  max-width: 80%;
+  margin: auto;
+
+}
+
+d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  background-color: #48737c;
+  text-align: center;
+  padding: 20px 0 20px;
+
+  h2 {
+    font-size: 50px;
+  }
+}
+
+.main {
+  h2 {
+    text-align: center;
+  }
+
+  padding: 10px 0;
+  position: relative;
+}
+
+#user_table {
+  padding: 60px 0 0;
+}
+
+.btn_users {
+  padding: 10px;
+  background-color: #0daddc;
+  color: white;
+  border: none;
+  box-shadow: 2px 2px 15px #7e7f81;
+  border-radius: 15px;
+  position: absolute;
+  display: block;
+  width: 120px;
+  transition: 0.33s;
+
+  &:hover {
+    color: black;
+  }
+
+  &:active {
+    transform: scale(0.9);
+    transition: 0.33s;
+  }
+}
+
+#btn_load_users {
+  left: 50%;
+  margin-left: -130px;
+}
+
+#btn_render_table {
+  left: 50%;
+  margin-left: -60px;
+}
+
+#users {
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: auto;
+  box-shadow: -20px 5px 80px grey;
+
+  caption {
+
+    position: relative;
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: #6596b2;
+    border: 1px solid black;
+
+    button {
+      box-shadow: 0 0 3px lightblue;
+      color: white;
+      background-color: #7b9cb2;
+      border: 1px solid black;
+      padding: 3px 5px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      margin-top: -12px;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .table-keys {
+    cursor: pointer;
+
+    td {
+      background-color: #a4d5f1;
+      cursor: pointer;
+
+      width: 16%;
+      &:nth-child(1){
+        width: 5%;
+      }
+      &:nth-child(5){
+        width: 24%;
+      }
+      &:nth-child(7){
+        width: 5%;
+      }
+      &:nth-child(8){
+        width: 5%;
+      }
+    }
+
+    font-weight: bolder;
+  }
+
+  .tr-active {
+    background-color: #d3e5f6;
+
+  }
+
+  tr {
+    background-color: #abc7d7;
+  }
+
+  td {
+    text-align: center;
+    cursor: pointer;
+    border-collapse: collapse;
+    border-width: 0 1px 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 0;
+    padding: 3px 10px;
+
+    i {
+      &:hover {
+        color: #777373;
+      }
+
+    }
+  }
+
+}
