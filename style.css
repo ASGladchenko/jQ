@@ -9,7 +9,11 @@
   margin: auto;
 }
 
-d-block {
+.d-none {
+  display: none;
+}
+
+.d-block {
   display: block;
 }
 
@@ -69,6 +73,21 @@ header h2 {
   margin-left: -60px;
 }
 
+.users_table_empty {
+  box-shadow: 0 0 15px 10px #313234;
+  font-family: "Yu Gothic Medium", sans-serif;
+  padding: 40px;
+  text-align: center;
+  background-color: #faa7a7;
+  width: 180px;
+  font-size: 25px;
+  position: fixed;
+  z-index: 25;
+  left: 50%;
+  top: 35%;
+  margin: -30px 0 0 -130px;
+}
+
 #users {
   table-layout: fixed;
   border-collapse: collapse;
@@ -82,12 +101,15 @@ header h2 {
   background-color: #6596b2;
   border: 1px solid black;
 }
+#users caption #btn_select_all {
+  right: 160px;
+}
 #users caption button {
   box-shadow: 0 0 3px lightblue;
   color: white;
   background-color: #7b9cb2;
   border: 1px solid black;
-  padding: 3px 5px;
+  padding: 3px 10px;
   position: absolute;
   right: 20px;
   top: 50%;

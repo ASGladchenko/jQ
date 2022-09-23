@@ -1,5 +1,7 @@
 let userTable = $('#user_table')
 let btn_render = $('#btn_render_table')
+
+
 $(btn_render).click(function () {
     $.ajax({
         url: "https://jsonplaceholder.typicode.com/users",
@@ -7,28 +9,46 @@ $(btn_render).click(function () {
         addRenderFuncInUser(users)
         renderTable(users)
     })
-    $(btn_render).remove()
+    $(btn_render).hide()
 });
 
 $(userTable).on('click', (event) => {
     let target = event.target
     let tr = event.target.closest('tr')
-    let activeTr = $('*.content-table')
+    let tableTr = $('*.content-table')
+    let table = $('#users')
 
-    if ($(target).hasClass('fa-regular fa-trash-can')) $(tr).remove()
+
+    if ($(target).hasClass('fa-regular fa-trash-can')) dataAvailabilityCheck(tr, table)
+
     if ($(tr).hasClass("content-table")) {
+
         $(tr).toggleClass('tr-active')
+
         $(tr).find('input').attr('checked', function (_, attr) {
             return !attr
         });
 
     }
-    if ($(target).prop('tagName') === "BUTTON") {
-        $(activeTr).each(function (_, tr) {
-            if ($(tr).hasClass('tr-active')) $(tr).remove()
+
+
+    if ($(target).attr('id') === 'btn_delete') {
+        $(tableTr).each(function (_, tr) {
+            if ($(tr).hasClass('tr-active')) dataAvailabilityCheck(tr, table)
         })
+
     }
+
 })
+
+function dataAvailabilityCheck(tr, table) {
+    $(tr).remove()
+
+    if ($('*.content-table').length === 0) {
+        table.remove()
+        $(btn_render).show()
+    }
+}
 
 function addRenderFuncInUser(users) {
     $(users).map(function (user) {
@@ -52,11 +72,13 @@ function renderUserInTable(user) {
 
 }
 
+
 function renderTable(users) {
     let tableHeader =
         `
+        <div class="users_table_empty d-none"><span>Table is empty</span></div>
         <table id="users" >
-          <Caption> Table with users data <button>Delete all selected</button> </Caption>
+          <Caption> Table with users data  <button id="btn_delete">Delete all selected</button> </Caption>
             <tr class="table-keys">
                 <td>Id</td>
                 <td>Name</td>
@@ -75,3 +97,6 @@ function renderTable(users) {
     })
 }
 
+function popUp(element, time) {
+        $('.users_table_empty').removeClass('d-none')
+}
