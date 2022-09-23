@@ -31,7 +31,6 @@ $(userTable).on('click', (event) => {
 
     }
 
-
     if ($(target).attr('id') === 'btn_delete') {
         $(tableTr).each(function (_, tr) {
             if ($(tr).hasClass('tr-active')) dataAvailabilityCheck(tr, table)
@@ -39,6 +38,10 @@ $(userTable).on('click', (event) => {
 
     }
 
+    if ($(target).attr('id') === 'btn_select_all') {
+        selectAll(tr)
+
+    }
 })
 
 function dataAvailabilityCheck(tr, table) {
@@ -72,13 +75,33 @@ function renderUserInTable(user) {
 
 }
 
+function selectAll() {
+    let res;
+    $('*.content-table').each(function (_, el) {if (!$(el).hasClass('tr-active')) res = true});
+    if (res) {
+        $('*.content-table').each(function (_, el) {
+            $(el).addClass('tr-active')
+            $(el).find('input').attr('checked', function (_, attr) {
+                return 'checked'
+            });
+
+        })
+
+    } else {$('*.content-table').each(function (_, el) {
+            $(el).removeClass('tr-active')
+            $(el).find('input').attr('checked', function (_, attr) {
+                return !attr
+            });
+
+        })}
+}
 
 function renderTable(users) {
     let tableHeader =
         `
         <div class="users_table_empty d-none"><span>Table is empty</span></div>
         <table id="users" >
-          <Caption> Table with users data  <button id="btn_delete">Delete all selected</button> </Caption>
+          <Caption> Table with users data<button id="btn_select_all">Select all</button>  <button id="btn_delete">Delete all selected</button> </Caption>
             <tr class="table-keys">
                 <td>Id</td>
                 <td>Name</td>
@@ -97,6 +120,34 @@ function renderTable(users) {
     })
 }
 
-function popUp(element, time) {
-        $('.users_table_empty').removeClass('d-none')
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
